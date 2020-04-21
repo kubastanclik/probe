@@ -1,22 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.svg">
+    <Main></main>
+    <div class="author"><a href="https://github.com/kubastanclik/" targer="_blank">Created by KS</a></div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Main from './components/Main.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Main
   }
 }
 </script>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,5 +30,26 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.author {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  color: #fff;
+  background-color: #800000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+}
+
+.author a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
 }
 </style>
