@@ -40,7 +40,7 @@ export default {
                 this.table = [];
             } else {
             this.show = !this.show;
-            Axios.get(`http://xerro.getopinion.pl/mail_gen/harvester/?url=${this.url}`).then((result)=>{
+            Axios.get(`https://xerro.getopinion.pl/mail_gen/harvester/?url=${this.url}`).then((result)=>{
                 this.table = result.data
                 this.show = !this.show;
             })
