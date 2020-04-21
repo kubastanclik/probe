@@ -131,6 +131,7 @@ export default {
     width: 50px;
     height: 50px;
     margin: 10px;
+    border: 1px solid #e1e1e1;
 }
 
 </style>

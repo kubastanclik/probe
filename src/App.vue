@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.svg">
+    <img class="main__logo" alt="Probe logo" src="./assets/logo.svg">
     <Main></main>
     <div class="author"><a href="https://github.com/kubastanclik/" targer="_blank">Created by KS</a></div>
   </div>
@@ -51,5 +51,9 @@ body {
   color: #fff;
   font-size: 13px;
   font-weight: 600;
+}
+
+.main__logo {
+  max-width: 300px;
 }
 </style>
