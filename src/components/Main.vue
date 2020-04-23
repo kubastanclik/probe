@@ -34,7 +34,7 @@
 
                 <div class="saved__list_colors">
 
-                    <div class="saved__list_colors_element" v-for="elem in JSON.parse(decode(item.colors)).colors.slice(0,3)" v-bind:key="elem">
+                    <div class="saved__list_colors_element" v-for="elem in JSON.parse(decode(item.colors)).colors.slice(0,4)" v-bind:key="elem">
                         <div class="saved__list_colors_picker" v-bind:style="{ backgroundColor: elem }"></div>
                         {{ elem }}
                     </div>
@@ -183,7 +183,6 @@ export default {
     outline: none;
     background-color: #800000;
     border: 1px solid #fff;
-    border-radius: 15px;
     transition: all .1s ease-in;
 }
 
