@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img class="main__logo" alt="Probe logo" src="./assets/logo.svg">
+    <a href="/">
+      <img class="main__logo" alt="Probe logo" src="./assets/logo.svg">
+    </a>
     <Main></main>
     <div class="author"><a href="https://github.com/kubastanclik/" targer="_blank">Created by KS</a></div>
   </div>
@@ -18,13 +20,34 @@ export default {
 </script>
 
 <style>
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #800;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -42,7 +65,7 @@ body {
   text-align: center;
   color: #fff;
   background-color: #800000;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 17px;
 }
 
