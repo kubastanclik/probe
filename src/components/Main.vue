@@ -138,7 +138,7 @@ export default {
         this.downloadTxt = 'GENERATE!';
         htmlToImage.toPng(document.querySelector(e))
         .then((dataUrl)=> {
-                download(dataUrl, `my-node-${e}.png`);
+                download(dataUrl, `my-node-${ Math.floor(Math.random() * (+1000 - +1)) + 1 }.png`);
                 this.downloadTxt = 'GET(.PNG)';
         });
     }
