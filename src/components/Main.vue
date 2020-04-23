@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <div class="color__input">
-            <input v-model="url" placeholder="https://example.com">
+            <input v-model="url" placeholder="https://example.com/logo.png">
             <div class="container__ok">
                 <button v-if="!showContainer" @click="get(url)">OK</button>
             </div>
@@ -142,7 +142,7 @@ export default {
                 this.downloadTxt = 'GET(.PNG)';
         });
     }
-    
+
     },
 
     created : function() {
