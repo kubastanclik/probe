@@ -293,6 +293,7 @@ export default {
 
 .saved__list_colors {
     background: #fff;
+    min-height: 250px;
 }
 
 .saved__list_colors_element {
