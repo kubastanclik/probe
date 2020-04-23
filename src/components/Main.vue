@@ -8,13 +8,14 @@
             <div v-if="showContainer" class="container__add">
                 <button @click="clear()">CLEAR</button>
                 <button class="container__add_save" @click="save()" :disabled="!buttonSwitch">{{ buttonSave }}</button>
+                <button @click="getPng('.color__list')"> {{ downloadTxt }}</button>
             </div>
         </div>
         <br />
         <img class="loader" src="../assets/ajax-loader.gif" v-if="show">
 
         <img  class="main_img" v-bind:src="url" v-show="table['colors']"/>
-        <div class="color__list">
+        <div class="color__list" v-bind:id="table['id']">
             <div class="color__list_item" v-show="table['colors']" v-for="item in table['colors']" v-bind:key="item">
                 <div class="color__item_picker" v-bind:style="{ backgroundColor: item }"></div>
                     {{ item }}
@@ -26,13 +27,17 @@
 
             <div class="saved__list_item" v-for="item in savedTable" v-bind:key="item.added">
                 
+                <div class="saved__list_download" @click="getPng(`#elem-${item.id}`)">
+                    <img src="../assets/download.png" />
+                </div>
+
                 <p>{{ decode(item.url).replace(/[a-z]+\:+\/\//g,'').substr(0,20) + '(...)' }}</p>
 
                 <div class="saved__list_item_imgcont">
                     <img :src="decode(item.url)" />
                 </div>
 
-                <div class="saved__list_colors">
+                <div class="saved__list_colors" :id="`elem-${item.id}`">
 
                     <div class="saved__list_colors_element" v-for="elem in JSON.parse(decode(item.colors)).colors.slice(0,4)" v-bind:key="elem">
                         <div class="saved__list_colors_picker" v-bind:style="{ backgroundColor: elem }"></div>
@@ -53,7 +58,8 @@
 <script>
 
 import Axios from 'axios';
-//import { debounce } from 'lodash';
+import htmlToImage from 'html-to-image';
+import download from 'downloadjs';
 
 export default {
     name : 'Main',
@@ -66,6 +72,7 @@ export default {
             buttonSwitch : true,
             showSaved : true,
             savedTable : [],
+            downloadTxt : 'GET(.PNG)',
             table : []
         }
     },
@@ -124,8 +131,18 @@ export default {
 
     decode : function(element) {
         return atob(element);
-    }
+    },
 
+    
+    getPng : function(e) {
+        this.downloadTxt = 'GENERATE!';
+        htmlToImage.toPng(document.querySelector(e))
+        .then((dataUrl)=> {
+                download(dataUrl, `my-node-${e}.png`);
+                this.downloadTxt = 'GET(.PNG)';
+        });
+    }
+    
     },
 
     created : function() {
@@ -214,6 +231,7 @@ export default {
     margin: 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
+    background-color: #fff;
 }
 
 .color__item_picker {
@@ -234,6 +252,7 @@ export default {
 }
 
 .saved__list_item {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -244,6 +263,7 @@ export default {
     border: 1px solid #800000;
     box-shadow: 0px 0px 0px #e1e1e1;
     transition: all .3s ease-in;
+    background-color: #fff;
 }
 
 .saved__list_item:hover {
@@ -269,6 +289,10 @@ export default {
     display: block;
     max-width: 90px;
     max-height: 100px;
+}
+
+.saved__list_colors {
+    background: #fff;
 }
 
 .saved__list_colors_element {
@@ -305,4 +329,13 @@ export default {
     color: #800;
 }
 
+.saved__list_download {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.saved__list_download:hover {
+    cursor: pointer;
+}
 </style>
